@@ -16,9 +16,8 @@ def get_weather():
   url = "http://api.openweathermap.org/data/2.5/weather?q={city}&APPID={key}&units=metric"
   weather_url = url.format(city=city_name, key=weather_key)
   
-  # AWS Lambda は UST なので、JST を UST に変える
-  time = dt.datetime.now() + dt.timedelta(hours=9) 
-  time = time.hour
+  # 時間を取得しておく
+  time = dt.datetime.now().hour
 
   # 天気データを取得
   weather_req = requests.get(weather_url)
